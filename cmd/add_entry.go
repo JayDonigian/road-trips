@@ -11,7 +11,6 @@ func main() {
 	flag.Parse()
 	journalName := *nameArg
 
-	// TODO: use the flags package instead of homebrew
 	if *nameArg == "" {
 		log.Fatalf("This script requires the journal name as a parameter.\n")
 	}
@@ -22,7 +21,7 @@ func main() {
 	}
 
 	for _, e := range j.MissingEntries() {
-		err = j.Write(e)
+		err = e.WriteFile(j)
 		if err != nil {
 			log.Fatalf("ERROR: while creating from template file - %s", err)
 		}

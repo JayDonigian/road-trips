@@ -9,72 +9,113 @@ import (
 	"log"
 	"os"
 	"strings"
-	"time"
 )
 
 type Journal struct {
-	indexPath    string
-	Name         string
-	MileageTotal int      `json:"mileage_total"`
-	ExpenseTotal float64  `json:"expense_total"`
-	Entries      []*Entry `json:"entries"`
+	indexPath, jsonPath string
+	Name                string
+	MileageTotal        int      `json:"mileage_total"`
+	ExpenseTotal        float64  `json:"expense_total"`
+	Entries             []*Entry `json:"entries"`
+	States              []string `json:"all_states,omitempty"`
+	USParks             []string `json:"all_us_parks,omitempty"`
+	Provinces           []string `json:"all_provinces,omitempty"`
+	CAParks             []string `json:"all_ca_parks,omitempty"`
 }
 
-func New(name string) (*Journal, error) {
-	j := &Journal{Name: name}
-	err := j.unmarshal(fmt.Sprintf("%s/journal.json", j.Name))
-	if err != nil {
+func New(name string) (j *Journal, err error) {
+	j = &Journal{
+		indexPath: fmt.Sprintf("%s/README.md", name),
+		jsonPath:  fmt.Sprintf("%s/journal.json", name),
+		Name:      name,
+	}
+
+	if err = j.unmarshal(j.jsonPath); err != nil {
 		return nil, err
 	}
 
-	j.indexPath = fmt.Sprintf("%s/index.md", j.Name)
-
-	var t time.Time
 	for _, e := range j.Entries {
-		t, err = time.Parse("01-02", e.Name)
-		if err != nil {
-			return nil, err
-		}
-		e.Date = time.Date(2016, t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second(), t.Nanosecond(), t.Location())
-
-		if e.DailyExpenses == 0 {
-			for _, expense := range e.Expenses {
-				e.DailyExpenses += expense.Cost
-			}
-		}
-
-		var p *Entry
-		var pEnd float64
-		if p, err = j.previousEntry(e); err == nil {
+		pEnd := 60.0
+		if p, err := j.previousEntry(e); err == nil {
 			pEnd = p.BudgetEnd
 		}
 
-		e.BudgetStart = pEnd + 60.00
-		e.BudgetEnd = e.BudgetStart - e.DailyExpenses
+		e.updateNewEntry(pEnd)
+		j.updateJournal(e)
 
-		j.MileageTotal += e.Mileage
-		j.ExpenseTotal += e.DailyExpenses
+		e.allLocations = [][]string{j.States, j.USParks, j.Provinces, j.CAParks}
 	}
 
 	return j, nil
 }
 
-func (j *Journal) unmarshal(jsonPath string) error {
-	jsonFile, err := os.Open(jsonPath)
-	if err != nil {
-		return err
+func (j *Journal) updateJournal(e *Entry) {
+	j.MileageTotal += e.Mileage
+	j.ExpenseTotal += e.DailyExpenses
+
+	j.updateLocationList(e, states)
+	j.updateLocationList(e, usParks)
+	j.updateLocationList(e, provinces)
+	j.updateLocationList(e, caParks)
+
+}
+
+func (j *Journal) updateLocationList(e *Entry, category listCategory) {
+	var eList, jList *[]string
+	switch category {
+	case states:
+		eList = &e.States
+		jList = &j.States
+	case usParks:
+		eList = &e.USParks
+		jList = &j.USParks
+	case provinces:
+		eList = &e.Provinces
+		jList = &j.Provinces
+	case caParks:
+		eList = &e.CAParks
+		jList = &j.CAParks
+	}
+
+	if eList != nil {
+		for _, item := range *eList {
+			var found bool
+			for _, exItem := range *jList {
+				if item == exItem {
+					found = true
+				}
+			}
+			if !found {
+				*jList = append(*jList, item)
+			}
+		}
+	}
+}
+
+func (j *Journal) unmarshal(jsonPath string) (err error) {
+	var jsonFile *os.File
+	if jsonFile, err = os.Open(jsonPath); err != nil {
+		return
 	}
 	defer func() { _ = jsonFile.Close() }()
 
-	bytes, err := io.ReadAll(jsonFile)
-	if err != nil {
-		return err
+	var bytes []byte
+	if bytes, err = io.ReadAll(jsonFile); err != nil {
+		return
 	}
 
-	err = json.Unmarshal(bytes, &j)
-	if err != nil {
-		return err
+	if err = json.Unmarshal(bytes, &j); err != nil {
+		return
 	}
+
+	// zero values are needed for totals and tallies after unmarshalling
+	j.MileageTotal = 0
+	j.ExpenseTotal = 0
+	j.States = make([]string, 0)
+	j.USParks = make([]string, 0)
+	j.Provinces = make([]string, 0)
+	j.CAParks = make([]string, 0)
+
 	return nil
 }
 
@@ -104,32 +145,8 @@ func (j *Journal) MissingEntries() []*Entry {
 	return missing
 }
 
-func (j *Journal) Write(e *Entry) error {
-	destination, err := os.Create(fmt.Sprintf(fileType(entry).format(), j.Name, e.Name))
-	if err != nil {
-		return err
-	}
-	defer func() { _ = destination.Close() }()
-
-	writer := bufio.NewWriter(destination)
-	defer func() { _ = writer.Flush() }()
-
-	lines := e.Write()
-	for _, line := range j.TotalTripStats(e) {
-		lines = append(lines, line)
-	}
-	for _, line := range e.PrevNextLinks() {
-		lines = append(lines, line)
-	}
-	for _, line := range lines {
-		_, _ = writer.WriteString(line + "\n")
-	}
-
-	return nil
-}
-
 func (j *Journal) WriteIndex(e *Entry) error {
-	file, err := os.OpenFile(fmt.Sprintf("%s/index.md", j.Name), os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
+	file, err := os.OpenFile(fmt.Sprintf("%s/README.md", j.Name), os.O_APPEND|os.O_CREATE|os.O_RDWR, 0644)
 	if err != nil {
 		return err
 	}
@@ -161,61 +178,6 @@ func (j *Journal) Save() error {
 		return err
 	}
 	return nil
-}
-
-func (j *Journal) TotalTripStats(e *Entry) []string {
-	return []string{
-		"## Trip Statistics\n",
-		fmt.Sprintf("* **Total Distance:** %d miles", j.MileageTotal),
-		fmt.Sprintf("* **Total Budget Spent:** $%.2f", j.ExpenseTotal),
-		"* **U.S. States**",
-		"  * New Hampshire",
-		"  * Maine",
-		"* **Canadian Provinces**",
-		"  * Nova Scotia",
-		"* **National Parks**",
-		"  * Acadia\n",
-		fmt.Sprintf("![total trip from Fremont to %s](%s \"total trip map\")\n", e.End.Short, e.RelativePathToFile(totalMap)),
-	}
-}
-
-type fileType int
-
-const (
-	entry = iota
-	dayMap
-	bikeMap
-	totalMap
-)
-
-func (ft fileType) format() string {
-	switch ft {
-	case entry:
-		return "%s/entries/%s.md"
-	case dayMap:
-		return "%s/maps/day/%s.png"
-	case bikeMap:
-		return "%s/maps/bike/%s.png"
-	case totalMap:
-		return "%s/maps/total/%s-total.png"
-	default:
-		return ""
-	}
-}
-
-func (ft fileType) formatPathRelativeToEntry() string {
-	switch ft {
-	case entry:
-		return "%s.md"
-	case dayMap:
-		return "../maps/day/%s.png"
-	case bikeMap:
-		return "../maps/bike/%s.png"
-	case totalMap:
-		return "../maps/total/%s-total.png"
-	default:
-		return ""
-	}
 }
 
 func (j *Journal) HasFile(e *Entry, f fileType) bool {
