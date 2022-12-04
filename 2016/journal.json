@@ -1,15 +1,15 @@
 {
     "Name": "2016",
-    "mileage_total": 17194,
-    "expense_total": 8233.569999999994,
+    "mileage_total": 2302,
+    "expense_total": 1150.11,
     "entries": [
         {
             "name": "06-26",
             "date": "2016-06-26T00:00:00Z",
             "mileage": 263,
-            "budget_start": 60,
+            "budget_start": 120,
             "daily_expenses": 54.5,
-            "budget_end": 5.5,
+            "budget_end": 65.5,
             "start": {
                 "emoji": "🇺🇸",
                 "short": "Fremont",
@@ -33,15 +33,19 @@
                     "item": "Starbucks",
                     "cost": 4.5
                 }
+            ],
+            "states": [
+                "New Hampshire",
+                "Maine"
             ]
         },
         {
             "name": "06-27",
             "date": "2016-06-27T00:00:00Z",
             "mileage": 69,
-            "budget_start": 65.5,
+            "budget_start": 125.5,
             "daily_expenses": 63,
-            "budget_end": 2.5,
+            "budget_end": 62.5,
             "start": {
                 "emoji": "🦞",
                 "short": "Bar Harbor",
@@ -65,15 +69,18 @@
                     "item": "Ice \u0026 Seam Seal",
                     "cost": 8
                 }
+            ],
+            "states": [
+                "Maine"
             ]
         },
         {
             "name": "06-28",
             "date": "2016-06-28T00:00:00Z",
             "mileage": 49,
-            "budget_start": 62.5,
+            "budget_start": 122.5,
             "daily_expenses": 28,
-            "budget_end": 34.5,
+            "budget_end": 94.5,
             "start": {
                 "emoji": "🌲",
                 "short": "Acadia",
@@ -89,15 +96,18 @@
                     "item": "Groceries \u0026 Whiskey",
                     "cost": 28
                 }
+            ],
+            "states": [
+                "Maine"
             ]
         },
         {
             "name": "06-29",
             "date": "2016-06-29T00:00:00Z",
             "mileage": 39,
-            "budget_start": 94.5,
+            "budget_start": 154.5,
             "daily_expenses": 0,
-            "budget_end": 94.5,
+            "budget_end": 154.5,
             "start": {
                 "emoji": "🌲",
                 "short": "Acadia",
@@ -108,15 +118,18 @@
                 "short": "Acadia",
                 "long": "Blackwoods Campground, Acadia National Park, Maine"
             },
-            "expenses": []
+            "expenses": [],
+            "states": [
+                "Maine"
+            ]
         },
         {
             "name": "06-30",
             "date": "2016-06-30T00:00:00Z",
             "mileage": 202,
-            "budget_start": 154.5,
+            "budget_start": 214.5,
             "daily_expenses": 80,
-            "budget_end": 74.5,
+            "budget_end": 134.5,
             "start": {
                 "emoji": "🌲",
                 "short": "Acadia",
@@ -140,15 +153,21 @@
                     "item": "6pk IPA",
                     "cost": 14
                 }
+            ],
+            "states": [
+                "Maine"
+            ],
+            "provinces": [
+                "New Brunswick"
             ]
         },
         {
             "name": "07-01",
             "date": "2016-07-01T00:00:00Z",
             "mileage": 139,
-            "budget_start": 134.5,
+            "budget_start": 194.5,
             "daily_expenses": 59.5,
-            "budget_end": 75,
+            "budget_end": 135,
             "start": {
                 "emoji": "🦫",
                 "short": "Harding's Point",
@@ -172,15 +191,18 @@
                     "item": "Reversing Falls Admission",
                     "cost": 6.5
                 }
+            ],
+            "provinces": [
+                "New Brunswick"
             ]
         },
         {
             "name": "07-02",
             "date": "2016-07-02T00:00:00Z",
             "mileage": 202,
-            "budget_start": 135,
+            "budget_start": 195,
             "daily_expenses": 102,
-            "budget_end": 33,
+            "budget_end": 93,
             "start": {
                 "emoji": "🦟",
                 "short": "The Shire",
@@ -208,15 +230,19 @@
                     "item": "Wood",
                     "cost": 6
                 }
+            ],
+            "provinces": [
+                "New Brunswick",
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-03",
             "date": "2016-07-03T00:00:00Z",
             "mileage": 198,
-            "budget_start": 93,
+            "budget_start": 153,
             "daily_expenses": 85.5,
-            "budget_end": 7.5,
+            "budget_end": 67.5,
             "start": {
                 "emoji": "🏝",
                 "short": "Five Islands",
@@ -244,15 +270,18 @@
                     "item": "Fish \u0026 Ice",
                     "cost": 8.5
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-04",
             "date": "2016-07-04T00:00:00Z",
             "mileage": 24,
-            "budget_start": 67.5,
+            "budget_start": 127.5,
             "daily_expenses": 27.5,
-            "budget_end": 40,
+            "budget_end": 100,
             "start": {
                 "emoji": "🖼",
                 "short": "Valley View",
@@ -272,15 +301,18 @@
                     "item": "Groceries",
                     "cost": 4.5
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-05",
             "date": "2016-07-05T00:00:00Z",
             "mileage": 109,
-            "budget_start": 100,
+            "budget_start": 160,
             "daily_expenses": 163.5,
-            "budget_end": -63.5,
+            "budget_end": -3.5,
             "start": {
                 "emoji": "🖼",
                 "short": "Valley View",
@@ -320,15 +352,18 @@
                     "item": "Sea Level Brewing",
                     "cost": 6.5
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-06",
             "date": "2016-07-06T00:00:00Z",
             "mileage": 125,
-            "budget_start": -3.5,
+            "budget_start": 56.5,
             "daily_expenses": 75.5,
-            "budget_end": -79,
+            "budget_end": -19,
             "start": {
                 "emoji": "🖼",
                 "short": "Valley View",
@@ -356,15 +391,18 @@
                     "item": "Camp Supplies",
                     "cost": 2.5
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-07",
             "date": "2016-07-07T00:00:00Z",
             "mileage": 41,
-            "budget_start": -19,
+            "budget_start": 41,
             "daily_expenses": -58.18000000000001,
-            "budget_end": 39.18000000000001,
+            "budget_end": 99.18,
             "start": {
                 "emoji": "🐥",
                 "short": "Ellenwood Lake",
@@ -384,15 +422,18 @@
                     "item": "Budget Audit",
                     "cost": -85.18
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-08",
             "date": "2016-07-08T00:00:00Z",
             "mileage": 251,
-            "budget_start": 99.18,
+            "budget_start": 159.18,
             "daily_expenses": 76.03,
-            "budget_end": 23.150000000000006,
+            "budget_end": 83.15,
             "start": {
                 "emoji": "🐥",
                 "short": "Ellenwood Lake",
@@ -428,15 +469,18 @@
                     "item": "Budget Audit",
                     "cost": -19.67
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-09",
             "date": "2016-07-09T00:00:00Z",
             "mileage": 52,
-            "budget_start": 83.15,
+            "budget_start": 143.15,
             "daily_expenses": 125.95,
-            "budget_end": -42.8,
+            "budget_end": 17.200000000000003,
             "start": {
                 "emoji": "🐿",
                 "short": "Laurie",
@@ -464,15 +508,18 @@
                     "item": "NS Flag Sticker",
                     "cost": 3.25
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-10",
             "date": "2016-07-10T00:00:00Z",
             "mileage": 83,
-            "budget_start": 17.200000000000003,
+            "budget_start": 77.2,
             "daily_expenses": 77.4,
-            "budget_end": -60.2,
+            "budget_end": -0.20000000000000284,
             "start": {
                 "emoji": "🐿",
                 "short": "Laurie",
@@ -504,15 +551,18 @@
                     "item": "Coffee Crisp",
                     "cost": 1.7
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-11",
             "date": "2016-07-11T00:00:00Z",
             "mileage": 186,
-            "budget_start": -0.20000000000000284,
+            "budget_start": 59.8,
             "daily_expenses": 68.71,
-            "budget_end": -68.91,
+            "budget_end": -8.909999999999997,
             "start": {
                 "emoji": "🐿",
                 "short": "Laurie",
@@ -544,15 +594,18 @@
                     "item": "Tim Horton's",
                     "cost": 3.6
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
             ]
         },
         {
             "name": "07-12",
             "date": "2016-07-12T00:00:00Z",
             "mileage": 270,
-            "budget_start": -8.909999999999997,
+            "budget_start": 51.09,
             "daily_expenses": 121.2,
-            "budget_end": -130.11,
+            "budget_end": -70.11,
             "start": {
                 "emoji": "🗿",
                 "short": "Whycocomagh",
@@ -584,7 +637,24 @@
                     "item": "Tim Horton's",
                     "cost": 4.2
                 }
+            ],
+            "provinces": [
+                "Nova Scotia"
+            ],
+            "ca_parks": [
+                "Cape Breton Highlands"
             ]
         }
+    ],
+    "all_states": [
+        "New Hampshire",
+        "Maine"
+    ],
+    "all_provinces": [
+        "New Brunswick",
+        "Nova Scotia"
+    ],
+    "all_ca_parks": [
+        "Cape Breton Highlands"
     ]
 }
