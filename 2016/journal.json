@@ -20,6 +20,42 @@
                 "short": "Bar Harbor",
                 "long": "Bluenose Inn, Bar Harbor, Maine"
             },
+            "emoji_story": "🥵 😭 🚙 🛒 🍺 ☕ 🏨 🍽 🍸 🎹 😎 💥",
+            "journal_entry": [
+                "* Packed up camp in Fremont - sweaty 😅",
+                "* Goodbyes 😭",
+                "* Drove to Epping",
+                "* Grocery shopping, didn't count this towards daily budget.",
+                "* Locked up our bikes (this will later bite us in the ass)",
+                "* Drove to Kittery",
+                "* Beer + sticker from Tributary - $23",
+                "* Drove to Freeport - stopped at LLBean and bought grate and camp dessert - $27",
+                "* Drove to Augusta - stopped Starbucks for iced coffee - $4.50",
+                "* Drove to Bar Harbor - checked in at the Bluenose Hotel",
+                "* Walked to downtown Bar Harbor",
+                "* Ate at Café This Way - YUM!",
+                "* Fingerling potato poutine with bourbon gravy",
+                "* Eggplant southwest shepherd's pie - Jay",
+                "* Quail Tikka Masala - Mel",
+                "* Bottle of NZ Sauvignon Blanc",
+                "* Walked back to hotel",
+                "* Went to \"The Great Room\"",
+                "* 2x martinis",
+                "* Tanqueray gin",
+                "* elderflower liqueur",
+                "* grapefruit juice",
+                "* grenadine",
+                "* Nick the bartender was great + sassy. Gave us free nuts.",
+                "* Piano guy was a real showman.",
+                "* Cheesy AF",
+                "* Schmoozer",
+                "* Beatles medley",
+                "* Old people",
+                "* Ancient furniture",
+                "* \"America the Beautiful\" closer",
+                "* Hung out in room 😎",
+                "* RIP Scarface"
+            ],
             "expenses": [
                 {
                     "item": "Campfire Grate \u0026 Camp Dessert",
@@ -56,6 +92,8 @@
                 "short": "Acadia",
                 "long": "Blackwoods Campground, Acadia National Park, Maine"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campground",
@@ -91,6 +129,8 @@
                 "short": "Acadia",
                 "long": "Blackwoods Campground, Acadia National Park, Maine"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Groceries \u0026 Whiskey",
@@ -118,6 +158,8 @@
                 "short": "Acadia",
                 "long": "Blackwoods Campground, Acadia National Park, Maine"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [],
             "states": [
                 "Maine"
@@ -140,6 +182,8 @@
                 "short": "Harding's Point",
                 "long": "Harding's Point Campground, New Brunswick, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campground",
@@ -178,6 +222,8 @@
                 "short": "The Shire",
                 "long": "The Shire, New Horton, New Brunswick, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Gas",
@@ -213,6 +259,8 @@
                 "short": "Five Islands",
                 "long": "Five Islands Resort \u0026 RV Park, Lower Five Islands, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Groceries",
@@ -253,6 +301,8 @@
                 "short": "Valley View",
                 "long": "Valley View Provincial Park, Hampton, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Gas",
@@ -292,6 +342,8 @@
                 "short": "Valley View",
                 "long": "Valley View Provincial Park, Hampton, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campsite",
@@ -323,6 +375,8 @@
                 "short": "Valley View",
                 "long": "Valley View Provincial Park, Hampton, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Gas",
@@ -374,6 +428,8 @@
                 "short": "Ellenwood Lake",
                 "long": "Ellenwood Lake Provincial Park, Yarmouth, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Camp Supplies",
@@ -413,6 +469,8 @@
                 "short": "Ellenwood Lake",
                 "long": "Ellenwood Lake Provincial Park, Yarmouth, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campsite",
@@ -444,6 +502,8 @@
                 "short": "Laurie",
                 "long": "Laurie Provincial Park, Grand Lake, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Whiskey \u0026 Tall Boy",
@@ -491,6 +551,8 @@
                 "short": "Laurie",
                 "long": "Laurie Provincial Park, Grand Lake, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Groceries",
@@ -530,6 +592,8 @@
                 "short": "Laurie",
                 "long": "Laurie Provincial Park, Grand Lake, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campsite",
@@ -573,6 +637,8 @@
                 "short": "Whycocomagh",
                 "long": "Whycocomagh Provincial Park, Whycocomagh, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "Campsite",
@@ -616,6 +682,8 @@
                 "short": "Whycocomagh",
                 "long": "Whycocomagh Provincial Park, Whycocomagh, Nova Scotia, Canada"
             },
+            "emoji_story": "",
+            "journal_entry": null,
             "expenses": [
                 {
                     "item": "The Rusty Anchor",
