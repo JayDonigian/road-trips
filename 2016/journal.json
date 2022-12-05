@@ -13,12 +13,12 @@
             "start": {
                 "emoji": "🇺🇸",
                 "short": "Fremont",
-                "long": "Fremont, New Hampshire"
+                "long": "Fremont, NH"
             },
             "end": {
                 "emoji": "🦞",
                 "short": "Bar Harbor",
-                "long": "Bluenose Inn, Bar Harbor, Maine"
+                "long": "Bluenose Hotel, Bar Harbor, ME"
             },
             "emoji_story": "🥵 😭 🚙 🛒 🍺 ☕ 🏨 🍽 🍸 🎹 😎 💥",
             "journal_entry": [
@@ -33,40 +33,40 @@
                 "* Drove to Augusta - stopped Starbucks for iced coffee - $4.50",
                 "* Drove to Bar Harbor - checked in at the Bluenose Hotel",
                 "* Walked to downtown Bar Harbor",
-                "* Ate at Café This Way - YUM!",
-                "* Fingerling potato poutine with bourbon gravy",
-                "* Eggplant southwest shepherd's pie - Jay",
-                "* Quail Tikka Masala - Mel",
-                "* Bottle of NZ Sauvignon Blanc",
+                "  * Ate at Café This Way - YUM!",
+                "    * Fingerling potato poutine with bourbon gravy",
+                "    * Eggplant southwest shepherd's pie - Jay",
+                "    * Quail Tikka Masala - Mel",
+                "    * Bottle of NZ Sauvignon Blanc",
                 "* Walked back to hotel",
                 "* Went to \"The Great Room\"",
-                "* 2x martinis",
-                "* Tanqueray gin",
-                "* elderflower liqueur",
-                "* grapefruit juice",
-                "* grenadine",
+                "  * 2x martinis",
+                "    * Tanqueray gin",
+                "    * elderflower liqueur",
+                "    * grapefruit juice",
+                "    * grenadine",
                 "* Nick the bartender was great + sassy. Gave us free nuts.",
                 "* Piano guy was a real showman.",
-                "* Cheesy AF",
-                "* Schmoozer",
-                "* Beatles medley",
-                "* Old people",
-                "* Ancient furniture",
-                "* \"America the Beautiful\" closer",
+                "  * Cheesy AF",
+                "  * Schmoozer",
+                "  * Beatles medley",
+                "  * Old people",
+                "  * Ancient furniture",
+                "  * \"America the Beautiful\" closer",
                 "* Hung out in room 😎",
-                "* RIP Scarface"
+                "* RIP Scarface 😱"
             ],
             "expenses": [
                 {
-                    "item": "Campfire Grate \u0026 Camp Dessert",
+                    "item": "Camping Supplies",
                     "cost": 27
                 },
                 {
-                    "item": "Tributary Beer \u0026 Sticker",
+                    "item": "Beer \u0026 Sticker",
                     "cost": 23
                 },
                 {
-                    "item": "Starbucks",
+                    "item": "Coffee",
                     "cost": 4.5
                 }
             ],
@@ -146,7 +146,6 @@
             "date": "2016-06-29T00:00:00Z",
             "mileage": 39,
             "budget_start": 154.5,
-            "daily_expenses": 0,
             "budget_end": 154.5,
             "start": {
                 "emoji": "🌲",

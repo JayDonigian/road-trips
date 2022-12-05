@@ -15,7 +15,7 @@ func main() {
 	if e, err := entryFromFile(); err == nil {
 		var bytes []byte
 		if bytes, err = json.MarshalIndent(e, "", "    "); err == nil {
-			_ = os.WriteFile(fmt.Sprintf("2016/entries/%s.json", e.Name), bytes, 0644)
+			_ = os.WriteFile(fmt.Sprintf("2016/%s.json", e.Name), bytes, 0644)
 		}
 	}
 }
@@ -30,9 +30,12 @@ func entryFromFile() (*journal.Entry, error) {
 
 	info := &journal.Entry{}
 
-	var expensing, locatingStates, locatingProvinces, locatingUSParks, locatingCAParks, journaling bool
+	var expensing, locatingStates, locatingProvinces, locatingUSParks, locatingCAParks, journaling, exit bool
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
+		if exit {
+			break
+		}
 		line := scanner.Text()
 		switch {
 		case strings.Contains(line, "Date (mm-dd)"):
@@ -58,43 +61,74 @@ func entryFromFile() (*journal.Entry, error) {
 		case strings.Contains(line, "### Expenses"):
 			expensing = true
 			info.Expenses = []journal.Expense{}
-		case expensing && strings.Contains(line, "`"):
-			cost, _ := strconv.ParseFloat(strings.Split(line, "`")[3], 64)
-			info.Expenses = append(info.Expenses, journal.Expense{Item: strings.Split(line, "`")[1], Cost: cost})
-		case expensing && line == "":
-			expensing = false
+		case expensing:
+			if strings.Contains(line, "`") {
+				cost, _ := strconv.ParseFloat(strings.Split(line, "`")[3], 64)
+				info.Expenses = append(info.Expenses, journal.Expense{Item: strings.Split(line, "`")[1], Cost: cost})
+			}
+			if line == "" {
+				expensing = false
+			}
 		case strings.Contains(line, "* States:"):
 			locatingStates = true
 			info.States = make([]string, 0)
-		case locatingStates && strings.Contains(line, "`"):
-			info.States = append(info.States, strings.Split(line, "`")[1])
-		case locatingStates && strings.HasPrefix(line, "* "):
-			locatingStates = false
-			locatingProvinces = true
-			info.Provinces = make([]string, 0)
-		case locatingProvinces && strings.Contains(line, "`"):
-			info.Provinces = append(info.Provinces, strings.Split(line, "`")[1])
-		case locatingProvinces && strings.HasPrefix(line, "* "):
-			locatingProvinces = false
-			locatingUSParks = true
-			info.USParks = make([]string, 0)
-		case locatingUSParks && strings.Contains(line, "`"):
-			info.USParks = append(info.USParks, strings.Split(line, "`")[1])
-		case locatingUSParks && strings.HasPrefix(line, "* "):
-			locatingUSParks = false
-			locatingCAParks = true
-			info.CAParks = make([]string, 0)
-		case locatingCAParks && strings.Contains(line, "`"):
-			info.CAParks = append(info.CAParks, strings.Split(line, "`")[1])
-		case locatingCAParks && line == "":
-			locatingCAParks = false
+		case locatingStates:
+			if strings.Contains(line, "`") {
+				info.States = append(info.States, strings.Split(line, "`")[1])
+			}
+			if strings.Contains(line, "* National Parks:") {
+				locatingStates = false
+				locatingUSParks = true
+				info.USParks = make([]string, 0)
+			}
+			if line == "" {
+				locatingStates = false
+			}
+		case locatingUSParks:
+			if strings.Contains(line, "`") {
+				info.USParks = append(info.USParks, strings.Split(line, "`")[1])
+			}
+			if strings.Contains(line, "* Provinces:") {
+				locatingUSParks = false
+				locatingProvinces = true
+				info.Provinces = make([]string, 0)
+			}
+			if line == "" {
+				locatingUSParks = false
+			}
+		case locatingProvinces:
+			if strings.Contains(line, "`") {
+				info.Provinces = append(info.Provinces, strings.Split(line, "`")[1])
+			}
+			if strings.Contains(line, "* Canadian National Parks:") {
+				locatingProvinces = false
+				locatingCAParks = true
+				info.CAParks = make([]string, 0)
+			}
+			if line == "" {
+				locatingProvinces = false
+			}
+		case locatingCAParks:
+			if strings.Contains(line, "`") {
+				info.Provinces = append(info.Provinces, strings.Split(line, "`")[1])
+			}
+			if line == "" {
+				locatingCAParks = false
+			}
+		case strings.Contains(line, "### Emoji Story"):
+			info.EmojiStory = strings.Split(line, "`")[1]
 		case strings.Contains(line, "### Journal Entry"):
 			journaling = true
 			info.JournalEntry = make([]string, 0)
-		case journaling && strings.Contains(line, "`"):
-			info.JournalEntry = append(info.JournalEntry, strings.Split(line, "`")[1])
-		case journaling && strings.Contains(line, "---"):
-			break
+		case journaling:
+			if line == "" {
+				journaling = false
+				exit = true
+				break
+			}
+			if !strings.Contains(line, "```") {
+				info.JournalEntry = append(info.JournalEntry, line)
+			}
 		}
 	}
 

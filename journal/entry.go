@@ -24,9 +24,9 @@ type Entry struct {
 
 	Mileage int `json:"mileage"`
 
-	BudgetStart   float64 `json:"budget_start"`
-	DailyExpenses float64 `json:"daily_expenses"`
-	BudgetEnd     float64 `json:"budget_end"`
+	BudgetStart   float64 `json:"budget_start,omitempty"`
+	DailyExpenses float64 `json:"daily_expenses,omitempty"`
+	BudgetEnd     float64 `json:"budget_end,omitempty"`
 
 	Start Location `json:"start"`
 	End   Location `json:"end"`
@@ -115,17 +115,19 @@ func (e *Entry) Story() []string {
 	if e.EmojiStory == "" {
 		return []string{"##  `EmojiStory`\n"}
 	}
-	return []string{e.EmojiStory}
+	return []string{fmt.Sprintf("%s\n", e.EmojiStory)}
 }
 
 func (e *Entry) JournalEntryStrings() []string {
-	if e.JournalEntry == nil || len(e.JournalEntry) == 0 {
-		return []string{
-			"## Journal Entry\n",
-			"* `Journal Entry`\n",
-		}
+	lines := []string{
+		"## Journal Entry",
 	}
-	return e.JournalEntry
+	for _, line := range e.JournalEntry {
+		lines = append(lines, line)
+	}
+	lines = append(lines, "\n")
+
+	return lines
 }
 
 func (e *Entry) Budget() []string {
@@ -170,8 +172,8 @@ func (e *Entry) Write() []string {
 		e.TitleSection(),
 		e.PrevNextLinks(),
 		e.TripInfo(),
-		e.Story(),
 		e.JournalEntryStrings(),
+		e.Story(),
 		e.Budget(),
 	}
 
